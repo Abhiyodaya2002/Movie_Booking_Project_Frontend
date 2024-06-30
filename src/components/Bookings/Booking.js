@@ -33,7 +33,7 @@ const handleSubmit= async(e)=>{
   }).then((res)=> console.log(res)).catch((err)=>console.log(err));
 
   try {
-    const response = await fetch('http://localhost:5000/payment/create-checkout-session', {
+    const response = await fetch('https://movie-booking-project-backend.onrender.com/payment/create-checkout-session', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ movieId: movie._id, ...inputs }),

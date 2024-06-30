@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export const getAllMovies = async ()=>{
-    const res= await axios.get("http://localhost:5000/movie").catch((err)=>{
+    const res= await axios.get("https://movie-booking-project-backend.onrender.com/movie").catch((err)=>{
         console.log(err);
     });
 
@@ -17,7 +17,7 @@ export const getAllMovies = async ()=>{
 }
 
 export const sendUserAuthRequest =async(data,signup)=>{
-    const res= await axios.post(`http://localhost:5000/user/${signup?"signup":"login"}`,{
+    const res= await axios.post(`https://movie-booking-project-backend.onrender.com/user/${signup?"signup":"login"}`,{
         name: signup? data.name: "",
         email: data.email,
         password: data.password,
@@ -36,7 +36,7 @@ export const sendUserAuthRequest =async(data,signup)=>{
   
 
 export const sendAdminAuthRequest= async(data)=>{
-    const res =await axios.post("http://localhost:5000/admin/login",{
+    const res =await axios.post("https://movie-booking-project-backend.onrender.com/admin/login",{
         email: data.email,
         password: data.password,
     }).catch((err)=>{
@@ -56,7 +56,7 @@ export const sendAdminAuthRequest= async(data)=>{
 }
 
 export const getMovieDetails =async(id)=>{
-   const res= await axios.get(`http://localhost:5000/movie/${id}`).catch((err)=> console.log(err));
+   const res= await axios.get(`https://movie-booking-project-backend.onrender.com/movie/${id}`).catch((err)=> console.log(err));
    if(res.status!==200)
     {
         return console.log("Unexpected Error");
@@ -66,7 +66,7 @@ export const getMovieDetails =async(id)=>{
 }
 
 export const newBooking= async(data)=>{
-    const res =await axios.post("http://localhost:5000/booking/",{
+    const res =await axios.post("https://movie-booking-project-backend.onrender.com/booking/",{
         movie: data.movie,
         seatNumber: data.seatNumber,
         date: data.date,
@@ -84,7 +84,7 @@ export const newBooking= async(data)=>{
 
 export const getUserBooking = async()=>{
     const id=localStorage.getItem("userId");
-    const res= await axios.get(`http://localhost:5000/user/bookings/${id}`).catch((err)=> console.log(err));
+    const res= await axios.get(`https://movie-booking-project-backend.onrender.com/user/bookings/${id}`).catch((err)=> console.log(err));
 
     if(res.status!==200)
         {
@@ -95,7 +95,7 @@ export const getUserBooking = async()=>{
 }
 
 export const deleteBooking= async(id)=>{
-    const res =await axios.delete(`http://localhost:5000/booking/${id}`).catch((err)=> console.log(err));
+    const res =await axios.delete(`https://movie-booking-project-backend.onrender.com/booking/${id}`).catch((err)=> console.log(err));
 
     if(res.status!==200)
         {
@@ -108,7 +108,7 @@ export const deleteBooking= async(id)=>{
 
 export const getUserDetails = async()=>{
     const id= localStorage.getItem("userId");
-    const res= await axios.get(`http://localhost:5000/user/${id}`).catch((err)=> console.log(err));
+    const res= await axios.get(`https://movie-booking-project-backend.onrender.com/user/${id}`).catch((err)=> console.log(err));
     if(res.status!==200)
         {
             return console.log("Unexpected Error");
@@ -119,7 +119,7 @@ export const getUserDetails = async()=>{
 }
 
 export const addMovie =async (data)=>{
-  const res= await  axios.post("http://localhost:5000/movie", {
+  const res= await  axios.post("https://movie-booking-project-backend.onrender.com/movie", {
         title: data.title,
         description: data.description,
         releaseDate: data.releaseDate,
@@ -144,7 +144,7 @@ export const addMovie =async (data)=>{
 
 export const getAdminById =async ()=>{
 const adminId= localStorage.getItem("adminId");
-const res =await axios.get(`http://localhost:5000/admin/${adminId}`).catch((err)=>console.log(err));
+const res =await axios.get(`https://movie-booking-project-backend.onrender.com/admin/${adminId}`).catch((err)=>console.log(err));
 
 if(res.status!==200)
     {
